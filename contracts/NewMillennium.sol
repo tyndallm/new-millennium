@@ -5,7 +5,7 @@ pragma solidity ^0.4.18;
  * private exhibitions to showcase their work. To view the current exhibition you
  * must purchase a membership which will allow access for the duration.
  */
-contract NewMillinneum {
+contract NewMillennium {
 
     address public owner;
 
@@ -27,7 +27,7 @@ contract NewMillinneum {
 
     uint exhibitionStartUnixTimestamp = 0;
 
-    function NewMillenium()
+    function NewMillennium()
         public
     {
         owner = msg.sender;
@@ -51,7 +51,7 @@ contract NewMillinneum {
     function nextExhibition(address newExhibitor)
         public
     {
-        require(exhibitionStartUnixTimestamp > 30 days);
+        require(now > (exhibitionStartUnixTimestamp + EXHIBITION_DURATION_SECONDS));
 
         // reset exhibition and memberships
         exhibitionStartUnixTimestamp = now;
